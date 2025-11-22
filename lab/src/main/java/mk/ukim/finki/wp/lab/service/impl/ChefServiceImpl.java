@@ -39,6 +39,14 @@ public class ChefServiceImpl implements ChefService {
         if (chef == null || dish == null) {
             return null;
         }
+//        chef.getDishes().stream().filter(dishtmp -> dishtmp.getDishId().equals(dishId)).findFirst().orElse(chef.getDishes().add(dish));
+
+        // gornoto zakomentirano ne raboti, ako sakam vaka da proveram dali go ima dishot treba vaka
+//        for (Dish d : chef.getDishes()) {
+//            if (d.getDishId().equals(dishId)) {
+//                return chef;
+//            }
+//        }
 
         chef.getDishes().add(dish);
         chefRepository.save(chef);
