@@ -31,8 +31,11 @@ public class DishController  {
     @GetMapping
     public String getDishesPage(HttpSession session, @RequestParam(required = false) String error, Model model) {
         Long chefId = (Long) session.getAttribute("chefId");
-
-        model.addAttribute("chef", chefService.findById(chefId));
+        if (chefId!=null) {
+            model.addAttribute("chef", chefService.findById(chefId));
+        }else {
+            model.addAttribute("chef", null);
+        }
         model.addAttribute("dishes", dishService.listDishes());
         return "dishesList";
     }
